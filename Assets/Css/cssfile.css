@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: black;
+    font-family: 'comic sans MS', 'ComicSans', 'cursive';
+}
+
+.header {
+    padding: 15px;
+
+}
+
+.header h1 {
+    display: inline-block;
+    font-size: 56px;
+}
+
+.header nav {
+    float: right;
+    padding-top: 20px;
+    margin-left: 20px;
+    font-size: 25px;
+    color: black;
+    list-style-type: none;
+    font-weight: bolder;
+}
+ 
+.header nav ul li { 
+    display: inline-block;
+    margin-right: 25px;
+}
