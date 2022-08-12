@@ -1,0 +1,11 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#recipe-title {
+    text-align: center;
+    background-color: rgb(237, 207, 207);
+    padding: 2rem 3rem;
+    border-radius: .5rem;
+}
