@@ -7,10 +7,23 @@
     <title>My Cookbook</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/cookbook.css" />
-
 </head>
 <body>
-    <header>My Cookbook</header>
+    <header>
+        <nav class="container mx-auto border-gray-200 p-5 rounded-2xl bg-gray-600">
+            <div class="container flex flex-wrap justify-between items-center mx-auto">
+                <!-- href needs to be specified for each html page **(TODO) -->
+                <a href="#" class="flex items-center">
+                    <img src="https://cdn-icons.flaticon.com/png/512/3041/premium/3041130.png?token=exp=1660606265~hmac=03fd15932bbef7498463d454de1748db" class="mr-3 h-6 sm:h-9" alt="Aldente Logo">
+                    <span class="self-center text-xl font-semibold whitespace-nowrap text-white">Aldente</span>
+                </a>
+                <div class="flex">
+                    <!-- button will need event listener to shoot to desired HTML **(TODO)  -->
+                    <button type="button" class=" rounded-lg text-white text-sm px-2 bg-gray-500 border-solid border-4">Placeholder Text</button>
+                </div>
+            </div>
+        </nav>
+    </header>
 <!-- <script src="./assets/js/.js"></script> -->
     <section class="content-container">
         <div class ="cookbook-container">
