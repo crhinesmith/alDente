@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+}
+
+#recipe-title {
+    text-align: center;
+    background-color: rgb(237, 207, 207);
+    padding: 2rem 3rem;
+    border-radius: .5rem;
+}
+
+#navbtn {
+    position: absolute;
+    right: 3rem;
+    top: 1rem;
+    text-align: center;
+    background-color: rgb(237, 207, 207);
+    padding: 1rem 1.5rem;
+    border-radius: .5rem;
+    border-style: none;
+    align-self: flex-end;
+}
+
+#navbtn:hover {
+    background-color: rgb(206, 199, 191) ;
+}
+
+/* Recipe container */
+#recipe-card {
+    display: flex;
+    flex-direction: row;
+    min-width: 900px;
+    min-height: 500px;
+    background-color: rgb(206, 199, 191);
+    border-radius: 1rem;
+    margin-top: 3rem;
+}
+
+#ingredient-cont {
+    margin: 2rem;
+    min-width: 35%;
+}
+
+#ingredient-header {
+    text-align: center;
+}
+
+#instructions-cont {
+    margin: 2rem;
+    min-width: 45%;
+    border-left-color: black;
+    border-left-width: 2px;
+    border-left-style: solid;
+
+}
+
+#instructions-header {
+    text-align: center;
+}
