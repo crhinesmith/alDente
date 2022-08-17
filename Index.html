@@ -5,36 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results | Al Dente</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="Assets\CSS\results.css" rel="stylesheet">
+    <link href="Assets/CSS/style.css" rel="stylesheet">
+    <title>Al Dente</title>
+
 </head>
 
 <body>
 
+
     <header>
-        <nav class="container mx-auto border-gray-200 p-5 rounded-2xl bg-gray-600">
-            <div class="container flex flex-wrap justify-between items-center mx-auto">
-                <!-- href needs to be specified for each html page **(TODO) -->
-                <a href="#" class="flex items-center">
-                    <img src="./Assets/picture/71kDenyis0L._AC_SL1500_.jpg"
-                        class="mr-3 h-6 sm:h-9" alt="Aldente Logo">
-                    <span class="self-center text-xl font-semibold whitespace-nowrap text-white">Aldente</span>
-                </a>
-                <div class="flex">
-                    <!-- button will need event listener to shoot to desired HTML **(TODO)  -->
-                    <button type="button"
-                        class=" rounded-lg text-white text-sm px-2 bg-gray-500 border-solid border-4">Placeholder
-                        Text</button>
-                </div>
-            </div>
-        </nav>
+        <h1 id="home-title">Search Recipes</h1>
     </header>
 
+    <main>
+        <!-- This is the main container, probably will not be visible -->
+        <container id="big-cont">
+            <!-- box for search form and search by genre -->
+            <container id="search-box">
+                <!-- Search form from tailwind -->
+                <form id="search-form">
+                    <label class="relative block">
+                        <span class="sr-only">Search</span>
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                        <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"><!-- ... --></svg>
+                        </span>
+                        <!-- Text input and search button -->
+                        <input id="search-text" class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-indigo-300 focus:ring-indigo-300 focus:ring-1 sm:text-sm" placeholder="Search for anything..." type="text" name="search"/>
+                        <button type="button" class="rounded-full bg-indigo-300 pl-3 pr-3 pt-1 pb-1 my-3 ml-4">Search</button>
+                    </label>  
+                </form>                
+            </container>
+            <!-- box for recipe of the day -->
+            <container id="recipe-today">
 
+            </container>
+        </container>
+    </main>
 
-
-    <script src="./Assets/Js/jsfile.js"></script>
+    <script src="Assets/JS/script.js"></script>
 </body>
 
 </html>                         
