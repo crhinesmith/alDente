@@ -1,0 +1,39 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#home-title {
+    text-align: center;
+    background-color: rgb(237, 207, 207);
+    padding: 2rem 3rem;
+    border-radius: .5rem;
+    margin: 3rem 2rem 0;
+    font-size: 3rem;
+}
+
+#big-cont {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    min-height: 500px;
+    background-color: rgb(206, 199, 191);
+    border-radius: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+#search-box {
+    margin: 2rem;
+    min-width: 40%;
+}
+
+#recipe-today {
+    margin: 2rem;
+    min-width: 40%;
+    border-left-color: black;
+    border-left-width: 2px;
+    border-left-style: solid;
+}
