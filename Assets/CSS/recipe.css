@@ -1,13 +1,8 @@
-body {
+main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-header {
-    display: flex;
-    flex-direction: row;
 }
 
 #recipe-title {
@@ -15,6 +10,8 @@ header {
     background-color: rgb(237, 207, 207);
     padding: 2rem 3rem;
     border-radius: .5rem;
+    margin-top: 3rem;
+    font-size: 3rem;
 }
 
 #navbtn {
