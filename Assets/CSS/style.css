@@ -39,6 +39,7 @@ main {
 }
 
 /* Search bar */
-#search-bar {
-    margin: 3rem;
+#search-text {
+    margin-top: 1.5rem;
+    margin-left: 1rem;
 }
