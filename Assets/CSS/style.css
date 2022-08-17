@@ -37,3 +37,8 @@ main {
     border-left-width: 2px;
     border-left-style: solid;
 }
+
+/* Search bar */
+#search-bar {
+    margin: 3rem;
+}
