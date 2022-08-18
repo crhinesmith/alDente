@@ -15,6 +15,8 @@ var mealOTD = {
 // Array. This array will contain pushed recipes filtered by ingredient names
 var ingRecipe = []
 
+// Array to hold ALL meal options. Not sure yet if I'll need this
+var allMeals = []
 
 
 // Fetch request for search bar
@@ -38,6 +40,7 @@ function searchApi(query, genre) {
 
         .then(function (categoryData) {
             // variable for length of the category array 
+            //console.log(categoryData);
             var catLength = categoryData.meals.length;
             // Loop through each category... If user input matches one of the categories, we will use that data in results page... trigger a function to show no more than 10 recipes in that category
             for (i = 0; i < catLength; i++) {
@@ -45,13 +48,29 @@ function searchApi(query, genre) {
                 if ((JSON.stringify(categoryData.meals[i].strCategory)).toLowerCase() == (JSON.stringify(userQuery)).toLowerCase()) {
                     console.log("YEP");
                     // Call function for results based on user's category
-                    searchByCategory(); // Should this be defined in this JS file or the results JS file?
+                    //searchByCategory(); // Should this be defined in this JS file or the results JS file?
                 }
+
+                // Loop through each category in categoryData, and list all recipes in each category.
+                function loopCategories() {
+                    var category = (JSON.stringify(categoryData.meals[i].strCategory)).toLowerCase();
+                    console.log(category);
+                    urlSearchCat = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category;
+                }
+
+
+                // Call above function
+                loopCategories()
             }
         })
 
+    
+    
+    
+     
+
     // Fetch for ingredients
-    fetch(listIngredients)
+    /* fetch(listIngredients)
     .then(function (res2) {
         if (!res2.ok) {
             throw res2.json(); 
@@ -64,7 +83,7 @@ function searchApi(query, genre) {
         var ingLength = ingredientData.meals.length;
         console.log(ingredientData.meals);
         // Loop through all 574 ingredients 
-    })
+    }) */
 
 
     // URL if user chooses to search by AREA?
