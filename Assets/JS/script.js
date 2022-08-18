@@ -76,17 +76,23 @@ function searchApi(query, genre) {
                                 //console.log(print.meals[b]);
                                 allMeals.push(print.meals[b]);
                             }
-                            
-                
-                            
                         })
                 }
-                
                 // Call above function
                 loopCategories()
             }
-            console.log(allMeals[4]);
+            console.log(allMeals[12].idMeal);
+
+            // Loop through all 283 recipes and create an object
+            for (w = 0; w < allMeals.length; w++) {
+                var mealID = allMeals[w].idMeal;
+                //console.log(mealID);
+
+                mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealID;
+                console.log(mealUrl);
+            }
           
+            
         })
 
     
