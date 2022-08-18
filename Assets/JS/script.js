@@ -70,14 +70,23 @@ function searchApi(query, genre) {
                         })
 
                         .then (function (print) {
-                            console.log(print.meals);
+                            //console.log(print.meals);
+                            // Loop through each category and push all meals
+                            for (b = 0; b < print.meals.length; b++) {
+                                //console.log(print.meals[b]);
+                                allMeals.push(print.meals[b]);
+                            }
+                            
+                
+                            
                         })
                 }
-
-
+                
                 // Call above function
                 loopCategories()
             }
+            console.log(allMeals[4]);
+          
         })
 
     
