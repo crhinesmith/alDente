@@ -9,11 +9,9 @@ var mealOTD = {
     ingredients: [],
     measurements: [],
     recipe: "",
-    timeDataWasRetrieved: ""
+    timeDataWasRetrieved: "",
+    instructions: "",
 }
-
-// Array. This array will contain pushed recipes filtered by ingredient names
-// var ingRecipe = []
 
 // Array to hold ALL meal options. Not sure yet if I'll need this
 var allMeals = [];
@@ -88,7 +86,7 @@ function searchApi(query, genre) {
                 loopCategories()
             }
 
-            console.log(allMeals[2]);
+            //console.log(allMeals[2]);
             
         })
 
@@ -170,77 +168,82 @@ searchFormEl.addEventListener('click', handleSearchForm);
 
 
 
-
-
+// Calvin's code
 function makeHTML(mealData) {
-    console.log(mealData)
     var h1El = document.createElement('h1');
     h1El.textContent = "Try the Recipe of the Day...";
 
-    var h3El = document.createElement('h2');
-    h3El.textContent = mealOTD.recipe;
+    var h2El = document.createElement('h2');
+    h2El.textContent = mealData.recipe;
 
-    var h3El = document.createElement('h2');
-    h3El.textContent = "Ingredients:"
+    var h4El = document.createElement('h4');
+    h4El.textContent = "Ingredients:" 
 
     var ulEl = document.createElement('ul')
-    // make html
-
-    recipeOTDContainer.append(h1El)
-
     
+    for (var i = 0; i< mealData.ingredients.length ;i++){
+        var ingredientsItem = document.createElement('li');
+        ingredientsItem.textContent = mealData.measurements[i] + " " + mealData.ingredients[i];
+        ulEl.appendChild(ingredientsItem);
+    }
+
+    var instructionsEl = document.createElement('p')
+    instructionsEl.textContent = "Instructions: " + mealData.instructions;
+
+    recipeOTDContainer.append(h1El, h2El, h4El, ulEl, instructionsEl)
 }
 
-    function getData() {
-        fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-            .then(function (response) {
-                return response.json()
-            })
-            .then(function (data) {
-                mealOTD.recipe = data.meals[0].strMeal
-                var meal = data.meals[0]
-                for (var e = 1; e < 21; e++) {
-                    var ingredient = mealOTD["strIngredient" + e]
-                    var measurement = mealOTD["strMeasure" + e]
-                    if (ingredient !== null && ingredient !== "") {
-                        mealOTD.ingredients.push(meal["strIngredient" + e])
-                    }
-
-                    if (measurement !== null && measurement !== "") {
-                        mealOTD.measurements.push(meal["strMeasure" + e])
-                    }
+function getData() {
+    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            mealOTD.recipe = data.meals[0].strMeal
+            mealOTD.instructions = data.meals[0].strInstructions
+            var meal = data.meals[0]
+            for (var e = 1; e < 21; e++) {
+                var ingredient = mealOTD["strIngredient" + e]
+                var measurement = mealOTD["strMeasure" + e]
+                if (ingredient !== null && ingredient !== "") {
+                    mealOTD.ingredients.push(meal["strIngredient" + e])
                 }
-                var today =  moment().format('YYYY-MM-DD');
-                console.log(today)
-                mealOTD.timeDataWasRetrieved = today
-                localStorage.setItem('mealOfTheDay', JSON.stringify(mealOTD))
-                makeHTML(mealOTD)
-            })
-    }
 
-    function generateRecipeOTD() {
-        while (recipeOTDContainer.firstChild) {
-            recipeOTDContainer.removeChild(recipeOTDContainer.firstChild)
-        }
-
-        var savedData = localStorage.getItem('mealOfTheDay') // read from local storage
-
-        
-        if (savedData !== null) {
-            // use the data already
-            var todaysDate = moment().format('YYYY-MM-DD')
-            if (moment(todaysDate).isAfter(mealOTD.timeDatawasRetrieved)) {
-                getData()
-            } else {
-                // use saved data
-                var parsedData = JSON.parse(savedData)
-                makeHTML(parsedData)
+                if (measurement !== null && measurement !== "") {
+                    mealOTD.measurements.push(meal["strMeasure" + e])
+                }
             }
-        } else {
-            getData()
-        }
+            var today =  moment().format('YYYY-MM-DD');
+            console.log(today)
+            mealOTD.timeDataWasRetrieved = today
+            localStorage.setItem('mealOfTheDay', JSON.stringify(mealOTD))
+            makeHTML(mealOTD)
+        })
+}
+
+function generateRecipeOTD() {
+    while (recipeOTDContainer.firstChild) {
+        recipeOTDContainer.removeChild(recipeOTDContainer.firstChild)
     }
-    generateRecipeOTD();
+
+    var savedData = localStorage.getItem('mealOfTheDay') // read from local storage
+
+    
+    if (savedData !== null) {
+        // use the data already
+        var todaysDate = moment().format('YYYY-MM-DD')
+        if (moment(todaysDate).isAfter(mealOTD.timeDatawasRetrieved)) {
+            getData()
+        } else {
+            // use saved data
+            var parsedData = JSON.parse(savedData)
+            makeHTML(parsedData)
+        }
+    } else {
+        getData()
+    }
+}
+generateRecipeOTD();
 
 
 //This was in main, question for TA//
