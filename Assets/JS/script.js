@@ -54,8 +54,24 @@ function searchApi(query, genre) {
                 // Loop through each category in categoryData, and list all recipes in each category.
                 function loopCategories() {
                     var category = (JSON.stringify(categoryData.meals[i].strCategory)).toLowerCase();
-                    console.log(category);
+                    category = JSON.parse(category);
+
+                    // Because this is in a loop, it will plug each category into the above url.
                     urlSearchCat = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category;
+                    console.log(urlSearchCat);
+
+                    // Request data from each url
+                    fetch (urlSearchCat)
+                        .then(function (res3) {
+                            if (!res3.ok) {
+                                throw res3.json(); 
+                            }
+                            return res3.json(); 
+                        })
+
+                        .then (function (print) {
+                            console.log(print.meals);
+                        })
                 }
 
 
