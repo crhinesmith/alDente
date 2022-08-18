@@ -13,10 +13,12 @@ var mealOTD = {
 }
 
 // Array. This array will contain pushed recipes filtered by ingredient names
-var ingRecipe = []
+// var ingRecipe = []
 
 // Array to hold ALL meal options. Not sure yet if I'll need this
-var allMeals = []
+var allMeals = [];
+
+
 
 
 // Fetch request for search bar
@@ -40,7 +42,6 @@ function searchApi(query, genre) {
 
         .then(function (categoryData) {
             // variable for length of the category array 
-            //console.log(categoryData);
             var catLength = categoryData.meals.length;
             // Loop through each category... If user input matches one of the categories, we will use that data in results page... trigger a function to show no more than 10 recipes in that category
             for (i = 0; i < catLength; i++) {
@@ -56,7 +57,7 @@ function searchApi(query, genre) {
                     var category = (JSON.stringify(categoryData.meals[i].strCategory)).toLowerCase();
                     category = JSON.parse(category);
 
-                    // Because this is in a loop, it will plug each category into the above url.
+                    // Because this is in a loop, it will plug each category into the url.
                     urlSearchCat = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category;
                     console.log(urlSearchCat);
 
@@ -73,25 +74,21 @@ function searchApi(query, genre) {
                             //console.log(print.meals);
                             // Loop through each category and push all meals
                             for (b = 0; b < print.meals.length; b++) {
-                                //console.log(print.meals[b]);
                                 allMeals.push(print.meals[b]);
+                                // mke a variable for the id of each meal
+                                var mealID = print.meals[b].idMeal;
+                                // here is the url for each meal
+                                mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealID;
+                                //console.log(mealUrl);
+
                             }
                         })
                 }
                 // Call above function
                 loopCategories()
             }
-            console.log(allMeals[12].idMeal);
 
-            // Loop through all 283 recipes and create an object
-            for (w = 0; w < allMeals.length; w++) {
-                var mealID = allMeals[w].idMeal;
-                //console.log(mealID);
-
-                mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealID;
-                console.log(mealUrl);
-            }
-          
+            console.log(allMeals[2]);
             
         })
 
