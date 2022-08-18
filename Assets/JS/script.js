@@ -4,17 +4,20 @@ var userInput = document.getElementById("search-text");
 var APIKey = "1";
 var recipeOTDContainer = document.getElementById("recipe-today")
 
-    //object for meal of the day
-    var mealOTD = {
-        ingredients: [],
-        measurements: [],
-        recipe: "",
-        timeDataWasRetrieved: ""
-    }
+//object for meal of the day
+var mealOTD = {
+    ingredients: [],
+    measurements: [],
+    recipe: "",
+    timeDataWasRetrieved: ""
+}
 
-// Working on fetch request with search bar
+// Array. This array will contain pushed recipes filtered by ingredient names
+var ingRecipe = []
 
 
+
+// Fetch request for search bar
 function searchApi(query, genre) {
     
     // first, I want to fetch lists of data
@@ -34,22 +37,37 @@ function searchApi(query, genre) {
         })
 
         .then(function (categoryData) {
-            //console.log(categoryData.meals[7].strCategory);
-            //console.log((JSON.stringify(categoryData.meals[7].strCategory)).toLowerCase());
+            // variable for length of the category array 
             var catLength = categoryData.meals.length;
             // Loop through each category... If user input matches one of the categories, we will use that data in results page... trigger a function to show no more than 10 recipes in that category
             for (i = 0; i < catLength; i++) {
-            
-                // if the category at index is the same as the user input, console log YEP!
+                // if the category at index is the same as the user input, trigger function to show results!
                 if ((JSON.stringify(categoryData.meals[i].strCategory)).toLowerCase() == (JSON.stringify(userQuery)).toLowerCase()) {
                     console.log("YEP");
+                    // Call function for results based on user's category
+                    searchByCategory(); // Should this be defined in this JS file or the results JS file?
                 }
             }
         })
 
+    // Fetch for ingredients
+    fetch(listIngredients)
+    .then(function (res2) {
+        if (!res2.ok) {
+            throw res2.json(); 
+        }
+        return res2.json(); 
+    })
+
+    .then(function (ingredientData) {
+        // variable for length of ingredient array
+        var ingLength = ingredientData.meals.length;
+        console.log(ingredientData.meals);
+        // Loop through all 574 ingredients 
+    })
 
 
-    // URL if user chooses to search by genre
+    // URL if user chooses to search by AREA?
     if (genre !== '') {
         recipeUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?c=' + genre;
     } 
@@ -68,14 +86,10 @@ function searchApi(query, genre) {
         } 
         // ingredient
         else if () {
-            parameter = 'i'
-        }
-        // area
-        else if () {
-            parameter = 'a'
+            parameter = 'i' ??
         }
         // name
-        else if () {
+        else {
             parameter = 's'
         } */
 
