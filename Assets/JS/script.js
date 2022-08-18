@@ -9,7 +9,8 @@ var mealOTD = {
     ingredients: [],
     measurements: [],
     recipe: "",
-    timeDataWasRetrieved: ""
+    timeDataWasRetrieved: "",
+    instructions: "",
 }
 
 // Working on fetch request with search bar
@@ -26,22 +27,27 @@ function handleSearchForm(e) {
 searchFormEl.addEventListener('click', handleSearchForm);
 
 function makeHTML(mealData) {
-    console.log(mealData)
     var h1El = document.createElement('h1');
     h1El.textContent = "Try the Recipe of the Day...";
 
-    var h3El = document.createElement('h2');
-    h3El.textContent = mealOTD.recipe;
+    var h2El = document.createElement('h2');
+    h2El.textContent = mealData.recipe;
 
-    var h3El = document.createElement('h2');
-    h3El.textContent = "Ingredients:"
+    var h4El = document.createElement('h4');
+    h4El.textContent = "Ingredients:" 
 
     var ulEl = document.createElement('ul')
-    // make html
+    
+    for (var i = 0; i< mealData.ingredients.length ;i++){
+        var ingredientsItem = document.createElement('li');
+        ingredientsItem.textContent = mealData.measurements[i] + " " + mealData.ingredients[i];
+        ulEl.appendChild(ingredientsItem);
+    }
 
-    recipeOTDContainer.append(h1El)
+    var instructionsEl = document.createElement('p')
+    instructionsEl.textContent = "Instructions: " + mealData.instructions;
 
-   
+    recipeOTDContainer.append(h1El, h2El, h4El, ulEl, instructionsEl)
 }
 
 function getData() {
@@ -51,6 +57,7 @@ function getData() {
         })
         .then(function (data) {
             mealOTD.recipe = data.meals[0].strMeal
+            mealOTD.instructions = data.meals[0].strInstructions
             var meal = data.meals[0]
             for (var e = 1; e < 21; e++) {
                 var ingredient = mealOTD["strIngredient" + e]
