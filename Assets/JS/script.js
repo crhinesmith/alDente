@@ -96,3 +96,7 @@ function generateRecipeOTD() {
 generateRecipeOTD();
 
 
+//This was in main, question for TA//
+//searchFormEl.addEventListener('click', handleSearchForm);//
+//const// 
+
