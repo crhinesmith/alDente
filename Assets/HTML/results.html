@@ -31,13 +31,13 @@
     </header> 
 
     <Main class="container mx-auto">
-        <div class="container my-4 flex justify-center" id="resultsHeader">
+        <div class="container my-4 flex justify-center gap-5" id="resultsHeader">
+            <button><i class="arrow" id="arrowLeft"></i></button>
             <h1>Results</h1>
+            <button><i class="arrow" id="arrowRight"></i></button>
         </div>
-        <div class="container mx-auto flex justify-center border-solid border-4 border-light-blue-500" id="recipeSuggestions">
-            <div class="container mx-auto flex justify-center">
-                Placeholder Text<!-- Recipes dynamically created and listed here -->
-            </div>
+        <div class="grid grid-cols-3 gap-4" id="recipeSuggestions">
+        <!-- dynamically created recipe cards -->
         </div>
     </Main>
     <script src="..\JS\results.js"></script>
