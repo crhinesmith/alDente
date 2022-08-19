@@ -103,9 +103,12 @@ console.log(selectedGenre[4].innerHTML);
 for (z = 0; z < 14; z++) {
 
     selectedGenre[z].addEventListener('click', function getSelectedGenreRecipes (event) {
+        // Copied Tyler's code from results.js
+        // Querying TheMealDb for Recipie results that match the selected search parameters // 
         var listEl = event.target;
-        console.log(listEl);
-        var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + "Seafood"//+ whatever selection var is chosen from homepage;
+        console.log(listEl.innerHTML);
+        var clickedCategory = listEl.innerHTML
+        var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + clickedCategory//+ whatever selection var is chosen from homepage;
         fetch(queryRecipes)
         .then(function (response) {
             return response.json();
@@ -124,8 +127,7 @@ for (z = 0; z < 14; z++) {
 
     }
 
-// Copied Tyler's code from results.js
-// Querying TheMealDb for Recipie results that match the selected search parameters //    
+   
 
 
 // Calvin's code
