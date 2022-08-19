@@ -166,7 +166,11 @@ function searchApi(query, genre) {
 // Define the function triggered by 'submit' in homepage search bar
 function handleSearchForm(e) {
     // prevent default
-
+    e.preventDefault(); 
+    //create a variable for user input
+    userQuery = userInput.value;
+    //create a variable for genre
+    userGenre = '';
     // On click, log the value typed into the form
     console.log(userInput.value);
     // Call function to search API and get us requested data
