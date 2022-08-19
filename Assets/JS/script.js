@@ -4,6 +4,7 @@ var userInput = document.getElementById("search-text");
 var APIKey = "1";
 var recipeOTDContainer = document.getElementById("recipe-today")
 var searchGenre = document.getElementById("searchGenre");
+var resultsURL = 'Assets/HTML/results.html';
 
 // Array to hold ALL meal options. Not sure yet if I'll need this
 var allMeals = [];
@@ -121,7 +122,15 @@ for (z = 0; z < 14; z++) {
                 </div>`
             )
         });
-    });
+
+        // Also call this function to switch to the results page
+        function switchPage() {
+            location.href = resultsURL;
+        };
+
+        switchPage();
+    }, 
+        );
 
     }
 
