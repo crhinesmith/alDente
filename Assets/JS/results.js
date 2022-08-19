@@ -30,7 +30,7 @@ getSelectedGenreRecipes ();
 // Event listener for the navbar button //
 $("#resultsNavBtn").on("click", function() {
 console.log("Button pressed!");
-location.href = "..\\HTML\\cookbook.html"
+location.href = "Assets\\HTML\\cookbook.html"
 });
 
 // If I have time try to make this work //
