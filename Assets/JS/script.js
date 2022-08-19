@@ -87,7 +87,26 @@ function searchApi(query, genre) {
                 loopCategories()
             }
 
-            //console.log(allMeals[2]);
+            console.log(allMeals.length);
+
+            
+
+            // Autocomplete Widget
+                $(function () {
+                    console.log('hello');
+                    // will populate this with allMeals[x].strMeal.
+                    var mealNames = []; 
+                    // for loop to populate mealNames array
+                    for (x = 0; x < allMeals.length; x++) {
+                        //console.log(JSON.stringify(allMeals[x].strMeal));
+                        mealNames.push(JSON.stringify(allMeals[x].strMeal));
+                        
+                    }
+                    console.log(mealNames);
+                $('#search-text').autocomplete({
+                    source: mealNames,
+                });
+            });
             
         })
 
