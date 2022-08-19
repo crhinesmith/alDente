@@ -18,6 +18,7 @@ var mealOTD = {
 }
 
 // Indigo's code
+// Search API
 function getRecipeArray () {
 // first, I want to fetch lists of data
 urlList = 'https://www.themealdb.com/api/json/v1/1/list.php?'
@@ -43,7 +44,7 @@ fetch(listCategories)
         // Loop through each category in categoryData, and list all recipes in each category.
         var category = (JSON.stringify(categoryData.meals[i].strCategory)).toLowerCase();
         category = JSON.parse(category);
-        console.log(category);
+        //console.log(category);
 
         // Because this is in a loop, it will plug each category into the url.
         urlSearchCat = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category;
@@ -68,10 +69,8 @@ fetch(listCategories)
                 //mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealID;
             }
 
-            
         })
 
-        
     }
 
     // Autocomplete Widget
@@ -95,7 +94,6 @@ fetch(listCategories)
 };
 
 getRecipeArray();
-
 
 // For Search by Genre
 var selectedGenre = searchGenre.querySelectorAll('li');
@@ -127,7 +125,6 @@ for (z = 0; z < 14; z++) {
 
     }
 
-   
 
 
 // Calvin's code
