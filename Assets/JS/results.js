@@ -1,8 +1,8 @@
 
 // Querying TheMealDb for Recipie results that match the selected search parameters //    
 function getSelectedGenreRecipes () {
-    var fromIndex = globalThis.mySharedData.resultsData;
-    var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + fromIndex//+ whatever selection var is chosen from homepage;
+    var chosenGenre = localStorage.getItem('clickedGenre');
+    var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + chosenGenre//+ whatever selection var is chosen from homepage;
     fetch(queryRecipes)
     .then(function (response) {
         return response.json();
@@ -18,10 +18,9 @@ function getSelectedGenreRecipes () {
         )
 
     });
+    };
 
-    }
-
-
+    getSelectedGenreRecipes();
 
     // Event listener for the selected recipe brief overview tile, brings user to full recipe breakout //
 //     $("").on("click", function(event) {
@@ -32,7 +31,7 @@ function getSelectedGenreRecipes () {
 // Event listener for the navbar button //
 $("#resultsNavBtn").on("click", function() {
 console.log("Button pressed!");
-location.href = "Assets\\HTML\\cookbook.html"
+location.href = "..\\HTML\\cookbook.html"
 });
 
 // If I have time try to make this work //

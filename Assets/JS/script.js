@@ -109,48 +109,19 @@ var selectedGenre = searchGenre.querySelectorAll('li');
 for (z = 0; z < 14; z++) {
 
     
-    selectedGenre[z].addEventListener('click', function getSelectedGenreRecipes (event) {
+    selectedGenre[z].addEventListener('click', function homePageToResultsPage (event) {
         console.log(event.target);
         var listEl = event.target;
-        //console.log(listEl.innerHTML);
-        var clickedCategory = listEl.innerHTML
-        globalThis.mySharedData = {resultsData: clickedCategory};
-        //var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + clickedCategory//+ whatever selection var is chosen from homepage;
-        // Also call this function to switch to the results page
+        localStorage.setItem('clickedGenre', listEl.innerHTML)
+        // Calling HTML for results page when any food genre is clicked
         function switchPage() {
             location.href = resultsURL;
-        };
+        }; 
 
         switchPage();
     }, 
     );
 }      
-
-
-        // Copied Tyler's code from results.js
-        // Querying TheMealDb for Recipie results that match the selected search parameters // 
-    /*    fetch(queryRecipes)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            for(var i = 0; i < 9; i++)
-            $("#recipeSuggestions").append(
-                `<div class="flex flex-col border-solid border-2 border-light-blue-500 resultCards" id="${data.meals[i].idMeal}">
-                    <p class="h-1/5" id="resultsText">${data.meals[i].strMeal}</p>
-                    <img class="justify-self-end h-4/5"src=${data.meals[i].strMealThumb}>
-                </div>`
-            )
-        }); */
-
-        
-    
-
-   
-
-
-
 
 // Calvin's code
 function makeHTML(mealData) {

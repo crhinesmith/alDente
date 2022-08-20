@@ -44,3 +44,9 @@ main {
     margin-top: 1.5rem;
     margin-left: 1rem;
 }
+/* Temp styling so there is feedback on what is being clicked (feel free to change later) */
+#searchGenre :hover {
+    color: azure;
+    background-color: black ;
+    font-size: 1.2rem;
+}
