@@ -81,7 +81,7 @@ function getRecipeByNameData(){
     .then(function (data) {
       generatedMeal.recipe = data.meals[0].strMeal;
       //console.log(generatedMeal.recipe);
-      generatedMeal.instructions.textContent = data.meals[0].strInstructions;
+      generatedMeal.instructions = data.meals[0].strInstructions;
       var meal = data.meals[0]
       for (var e = 1; e < 21; e++) {
         var ingredient = generatedMeal["strIngredient" + e]
