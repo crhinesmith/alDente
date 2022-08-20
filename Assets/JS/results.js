@@ -1,4 +1,4 @@
-
+var recipeURL = '..\\HTML\\recipe.html';
 // Querying TheMealDb for Recipie results that match the selected search parameters //    
 function getSelectedGenreRecipes () {
     var chosenGenre = localStorage.getItem('clickedGenre');
@@ -12,8 +12,8 @@ function getSelectedGenreRecipes () {
         for(var i = 0; i < 9; i++)
         $("#recipeSuggestions").append(
             `<div class="flex flex-col border-solid border-2 border-light-blue-500 resultCards" id="${data.meals[i].idMeal}">
-                <p class="h-1/5" id="resultsText">${data.meals[i].strMeal}</p>
-                <img class="justify-self-end h-4/5"src=${data.meals[i].strMealThumb}>
+                <p class="h-3/6 resultsText" id="${data.meals[i].idMeal}">${data.meals[i].strMeal}</p>
+                <img class="justify-self-end" src=${data.meals[i].strMealThumb} id="${data.meals[i].idMeal}">
             </div>`
         )
 
@@ -22,11 +22,21 @@ function getSelectedGenreRecipes () {
 
     getSelectedGenreRecipes();
 
-    // Event listener for the selected recipe brief overview tile, brings user to full recipe breakout //
-//     $("").on("click", function(event) {
-//     event.preventDefault();
-//     console.log("Button pressed!");
-// });
+var selectedRecipeCard = $("#recipeSuggestions");
+
+selectedRecipeCard.on('click', function resultsPageToRecipePage (e) {
+    console.log("button pressed!");
+    var recipeCardEl = e.target.id;
+    // Pulling genre selection text into local storage to feed results page display
+    localStorage.setItem('clickedRecipe', recipeCardEl)
+    // // Calling HTML for results page when any food genre is clicked
+    function switchPage() {
+        location.href = recipeURL;
+    }; 
+
+    switchPage();
+}, 
+);
 
 // Event listener for the navbar button //
 $("#resultsNavBtn").on("click", function() {
