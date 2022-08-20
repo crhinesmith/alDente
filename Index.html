@@ -58,13 +58,36 @@
                         <input id="search-text" class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-indigo-300 focus:ring-indigo-300 focus:ring-1 sm:text-sm" placeholder="Search for anything..." type="text" name="search"/>
                         <button type="button" class="rounded-full bg-indigo-300 pl-3 pr-3 pt-1 pb-1 my-3 ml-4">Search</button>
                     </label>  
-                </form>                    
+                </form>  
+                <div>
+                    <h2>Or search by genre:</h2>
+                    <ul data-page="home" id="searchGenre">
+                        <li id="beef">Beef</li>
+                        <li id="breakfast">Breakfast</li>
+                        <li id="chicken">Chicken</li>
+                        <li id="dessert">Dessert</li>
+                        <li id="goat">Goat</li>
+                        <li id="lamb">Lamb</li>
+                        <li id="miscellaneous">Miscellaneous</li>
+                        <li id="pasta">Pasta</li>
+                        <li id="pork">Pork</li>
+                        <li id="seafood">Seafood</li>
+                        <li id="side">Side</li>
+                        <li id="starter">Starter</li>
+                        <li id="vegan">Vegan</li>
+                        <li id="vegetarian">Vegetarian</li>
+                    </ul>
+                </div>                  
             </container>
             <!-- box for recipe of the day -->
             <container id="recipe-today">
             </container>
         </container>
-       
+        <form id="cookBook">
+            <input id="input" type="text" placeholder="Add to Cookbook" required />
+            <button id="recipeSubmit">Save</button>
+          </form>
+          <ul id="recipes"></ul>
     </main>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -74,4 +97,4 @@
     <script src="Assets/JS/results.js"></script>
 </body>
 
-</html>                         
+</html> 

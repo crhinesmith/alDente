@@ -1,6 +1,7 @@
 // Querying TheMealDb for Recipie results that match the selected search parameters //    
 function getSelectedGenreRecipes () {
-    var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + "Seafood"//+ whatever selection var is chosen from homepage;
+    var fromIndex = globalThis.mySharedData.resultsData;
+    var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + fromIndex//+ whatever selection var is chosen from homepage;
     fetch(queryRecipes)
     .then(function (response) {
         return response.json();
