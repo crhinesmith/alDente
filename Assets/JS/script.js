@@ -1,6 +1,5 @@
 // variables
 var searchFormEl = document.getElementById("search-form");
-var userInput = document.getElementById("search-text");
 var APIKey = "1";
 var recipeOTDContainer = document.getElementById("recipe-today")
 var searchGenre = document.getElementById("searchGenre");
@@ -10,6 +9,7 @@ var resultsURL = 'Assets/HTML/results.html';
 var allCategories = [];
 var allCategoryMeals = [];
 var allMeals = [];
+var allMealDetails = [];
 
 // Clicked element to send to results page
 globalThis.mySharedData = {resultsData: ''};
@@ -59,7 +59,6 @@ $(function () {
             
             allCategories.push(category);
             urlSearchCat = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + allCategories[i];
-            //console.log(allCategories);
 
             // Request data from each url
             fetch (urlSearchCat)
@@ -70,12 +69,11 @@ $(function () {
                 return res3.json(); 
             })
             .then (function(print) {
-                console.log(print);
                 //allCategoryMeals.push(print.meals);
-                //console.log(allCategoryMeals);
                 for (b = 0; b < print.meals.length; b++) {
-                    var boop = print.meals[b].strMeal;
-                allMeals.push(print.meals[b].strMeal);
+                    var pms = print.meals[b].strMeal;
+                allMeals.push(pms);
+                
                 }
 
             })
@@ -115,7 +113,35 @@ for (z = 0; z < 14; z++) {
         switchPage();
     }, 
     );
+
 }      
+
+// Click listener function for search bar
+function handleSearchForm(event) {
+    event.preventDefault();
+
+    console.log('clicked');
+    var userInput = document.getElementById("search-text").value;
+    console.log(userInput);
+
+    //var searchNameUrl = 'www.themealdb.com/api/json/v1/1/search.php?s=' + userInput;
+    
+    // Set chosen name into local storage
+    localStorage.setItem('clickedName', userInput);
+
+     // Calling HTML for results page when any food genre is clicked
+     function switchPage() {
+        location.href = resultsURL;
+    }; 
+
+    switchPage();
+
+}
+
+// Click listener for search bar
+searchFormEl.addEventListener('submit', handleSearchForm);
+
+
 
 // Calvin's code
 function makeHTML(mealData) {
