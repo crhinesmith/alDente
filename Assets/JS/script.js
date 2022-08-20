@@ -12,6 +12,7 @@ var allMeals = [];
 // Clicked element to send to results page
 globalThis.mySharedData = {resultsData: ''};
 
+
 //object for meal of the day
 var mealOTD = {
     ingredients: [],
@@ -147,6 +148,7 @@ for (z = 0; z < 14; z++) {
     
 
    
+
 
 
 

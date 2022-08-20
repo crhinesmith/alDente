@@ -1,3 +1,4 @@
+
 // Querying TheMealDb for Recipie results that match the selected search parameters //    
 function getSelectedGenreRecipes () {
     var fromIndex = globalThis.mySharedData.resultsData;
@@ -15,10 +16,10 @@ function getSelectedGenreRecipes () {
                 <img class="justify-self-end h-4/5"src=${data.meals[i].strMealThumb}>
             </div>`
         )
-    });
-};
 
-getSelectedGenreRecipes ();
+    });
+
+    }
 
 
 
