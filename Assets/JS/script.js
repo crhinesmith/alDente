@@ -129,12 +129,12 @@ function handleSearchForm(event) {
     
     // Set chosen name into local storage
     localStorage.setItem('clickedName', userInput);
+    
 
      // Calling HTML for results page when any food genre is clicked
      function switchPage() {
         location.href = recipeURL;
     }; 
-
     switchPage();
 
 }

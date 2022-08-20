@@ -58,9 +58,9 @@ function getRecipeByIdData(){
     }
     generateHTML(generatedMeal)
   })
-  
 }
 
+getRecipeByIdData();
 
 
 function getRecipeByNameData(){
@@ -86,7 +86,6 @@ function getRecipeByNameData(){
   })
   generateHTML(generatedMeal)
 }
-
 
 // function makeList() {
 //   var savedRecipe = prompt("would you like to save this recipe?")
