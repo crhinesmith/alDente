@@ -60,17 +60,28 @@ function getRecipeByIdData(){
   })
 }
 
-getRecipeByIdData();
+function whichType() {
+  if (localStorage.getItem('type') === 'genre') {
+    getRecipeByIdData();
+  }
+  else if (localStorage.getItem('type') === 'name') {
+    getRecipeByNameData()
+  }
+}
 
+whichType()
 
 function getRecipeByNameData(){
+  console.log('yelp');
+  console.log(JSON.stringify(clickedRecipeName));
   fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + clickedRecipeName)
     .then(function (response) {
       return response.json()
   })
     .then(function (data) {
-      generatedMeal.recipe = data.meals[0].strMeal
-      generatedMeal.instructions = data.meals[0].strInstructions
+      generatedMeal.recipe = data.meals[0].strMeal;
+      //console.log(generatedMeal.recipe);
+      generatedMeal.instructions.textContent = data.meals[0].strInstructions;
       var meal = data.meals[0]
       for (var e = 1; e < 21; e++) {
         var ingredient = generatedMeal["strIngredient" + e]
@@ -83,9 +94,11 @@ function getRecipeByNameData(){
             generatedMeal.measurements.push(meal["strMeasure" + e])
         }
     }
+    generateHTML(generatedMeal);
   })
-  generateHTML(generatedMeal)
+  
 }
+
 
 // function makeList() {
 //   var savedRecipe = prompt("would you like to save this recipe?")

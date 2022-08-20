@@ -4,7 +4,7 @@ var APIKey = "1";
 var recipeOTDContainer = document.getElementById("recipe-today")
 var searchGenre = document.getElementById("searchGenre");
 var resultsURL = 'Assets/HTML/results.html';
-var recipeURL = 'Assets/HTML/recipe.html'
+var recipeURL = 'groupproject1/Assets/HTML/recipe.html';
 
 // Array to hold ALL meal options. Not sure yet if I'll need this
 var allCategories = [];
@@ -109,6 +109,7 @@ for (z = 0; z < 14; z++) {
         // Calling HTML for results page when any food genre is clicked
         function switchPage() {
             location.href = resultsURL;
+            localStorage.setItem('type', 'genre');
         }; 
 
         switchPage();
@@ -133,9 +134,11 @@ function handleSearchForm(event) {
 
      // Calling HTML for results page when any food genre is clicked
      function switchPage() {
-        location.href = recipeURL;
+        location.href = 'Assets/HTML/recipe.html';
+        localStorage.setItem('type', 'name');
     }; 
     switchPage();
+
 
 }
 
