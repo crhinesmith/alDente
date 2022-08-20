@@ -1,3 +1,6 @@
+body {
+    font-family: "Playfair Display", serif;
+}
 
 main {
     display: flex;
@@ -13,6 +16,7 @@ main {
     border-radius: .5rem;
     margin: 3rem 2rem 0;
     font-size: 3rem;
+    font-weight: 700;
 }
 
 #big-cont {
@@ -28,15 +32,23 @@ main {
 
 #search-box {
     margin: 2rem;
+    margin-top: .9rem;
+    margin-left: 1rem;
     min-width: 40%;
 }
 
-#recipe-today {
-    margin: 2rem;
-    min-width: 40%;
-    border-left-color: black;
-    border-left-width: 2px;
-    border-left-style: solid;
+#genre-container {
+    margin-left: 1.2rem;
+    margin-top: 1rem;
+}
+
+#search-by-genre {
+    font-size: 1.2rem;
+}
+
+.genre {
+    margin: .15rem 0;
+    font-size: 1rem;
 }
 
 /* Search bar */
@@ -46,7 +58,37 @@ main {
 }
 /* Temp styling so there is feedback on what is being clicked (feel free to change later) */
 #searchGenre :hover {
-    color: azure;
-    background-color: black ;
+    background-color: rgb(237, 207, 207);
     font-size: 1.2rem;
+    border-radius: .2rem;
 }
+
+
+/* Recipe of the Day */
+#recipe-today {
+    margin: 2rem;
+    min-width: 40%;
+    border-left-color: black;
+    border-left-width: 2px;
+    border-left-style: solid;
+    padding-left: .5rem;
+}
+
+#ingredients {
+    margin-left: 2rem;
+    margin-top: .2rem;
+    margin-bottom: .2rem; 
+}
+
+#h1-el {
+    font-size: 1.5rem;
+    font-weight: 500;
+
+}
+
+#h2-el {
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-style: italic;
+}
+
