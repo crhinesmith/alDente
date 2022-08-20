@@ -9,6 +9,10 @@ var resultsURL = 'Assets/HTML/results.html';
 // Array to hold ALL meal options. Not sure yet if I'll need this
 var allMeals = [];
 
+// Clicked element to send to results page
+globalThis.mySharedData = {resultsData: ''};
+
+
 //object for meal of the day
 var mealOTD = {
     ingredients: [],
@@ -97,18 +101,35 @@ fetch(listCategories)
 getRecipeArray();
 
 // For Search by Genre
+// This selects all li elements (the 14 categories) inside the ul 
 var selectedGenre = searchGenre.querySelectorAll('li');
-console.log(selectedGenre[4].innerHTML);
+//console.log(selectedGenre[4].innerHTML);
+
+// Loop through each category to give each of the li elements a click event
 for (z = 0; z < 14; z++) {
 
+    
     selectedGenre[z].addEventListener('click', function getSelectedGenreRecipes (event) {
+        console.log(event.target);
+        var listEl = event.target;
+        //console.log(listEl.innerHTML);
+        var clickedCategory = listEl.innerHTML
+        globalThis.mySharedData = {resultsData: clickedCategory};
+        //var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + clickedCategory//+ whatever selection var is chosen from homepage;
+        // Also call this function to switch to the results page
+        function switchPage() {
+            location.href = resultsURL;
+        };
+
+        switchPage();
+    }, 
+    );
+}      
+
+
         // Copied Tyler's code from results.js
         // Querying TheMealDb for Recipie results that match the selected search parameters // 
-        var listEl = event.target;
-        console.log(listEl.innerHTML);
-        var clickedCategory = listEl.innerHTML
-        var queryRecipes = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + clickedCategory//+ whatever selection var is chosen from homepage;
-        fetch(queryRecipes)
+    /*    fetch(queryRecipes)
         .then(function (response) {
             return response.json();
         })
@@ -121,18 +142,13 @@ for (z = 0; z < 14; z++) {
                     <img class="justify-self-end h-4/5"src=${data.meals[i].strMealThumb}>
                 </div>`
             )
-        });
+        }); */
 
-        // Also call this function to switch to the results page
-        function switchPage() {
-            location.href = resultsURL;
-        };
+        
+    
 
-        switchPage();
-    }, 
-        );
+   
 
-    }
 
 
 
