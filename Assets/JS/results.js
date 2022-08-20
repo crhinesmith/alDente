@@ -35,6 +35,7 @@ selectedRecipeCard.on('click', function resultsPageToRecipePage (e) {
     }; 
 
     switchPage();
+    getRecipeByIdData();
 }, 
 );
 
