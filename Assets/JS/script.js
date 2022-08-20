@@ -1,13 +1,15 @@
 // variables
 var searchFormEl = document.getElementById("search-form");
-var userInput = document.getElementById("search-text");
 var APIKey = "1";
 var recipeOTDContainer = document.getElementById("recipe-today")
 var searchGenre = document.getElementById("searchGenre");
 var resultsURL = 'Assets/HTML/results.html';
 
 // Array to hold ALL meal options. Not sure yet if I'll need this
+var allCategories = [];
+var allCategoryMeals = [];
 var allMeals = [];
+var allMealDetails = [];
 
 // Clicked element to send to results page
 globalThis.mySharedData = {resultsData: ''};
@@ -25,73 +27,63 @@ var mealOTD = {
 // Indigo's code
 // Search API
 function getRecipeArray () {
-// first, I want to fetch lists of data
-urlList = 'https://www.themealdb.com/api/json/v1/1/list.php?'
-listCategories = urlList + 'c=list';
-listIngredients = urlList + 'i=list';
-listArea = urlList + 'a=list';
-console.log(listCategories);
 
-fetch(listCategories)
-.then(function (res) {
-    if (!res.ok) {
-        throw res.json(); 
-    }
-    return res.json(); 
-})
 
-.then (function (categoryData) {
-    console.log(categoryData);
-    catLength = categoryData.meals.length;
-    console.log(catLength);
+// Autocomplete Widget
+$(function () {
 
-    for (i = 0; i < catLength; i++) {
-        // Loop through each category in categoryData, and list all recipes in each category.
-        var category = (JSON.stringify(categoryData.meals[i].strCategory)).toLowerCase();
-        category = JSON.parse(category);
-        //console.log(category);
+    // first, I want to fetch lists of data
+    urlList = 'https://www.themealdb.com/api/json/v1/1/list.php?';
+    listCategories = urlList + 'c=list';
+    listIngredients = urlList + 'i=list';
+    listArea = urlList + 'a=list';
+    console.log(listCategories);
 
-        // Because this is in a loop, it will plug each category into the url.
-        urlSearchCat = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category;
-        //console.log(urlSearchCat);
-
-        // Request data from each url
-        fetch (urlSearchCat)
-        .then(function (res3) {
-            if (!res3.ok) {
-                throw res3.json(); 
-            }
-            return res3.json(); 
-        })
-        .then (function(print) {
-            //console.log(print.meals);
-            // ANOTHER for loop to get each index (meal) of each of the 14 categories
-            for (b = 0; b < print.meals.length; b++) {
-                allMeals.push(print.meals[b]);
-                // make a variable for the id of each meal
-                //var mealID = print.meals[b].idMeal;
-                // here is the url for each meal
-                //mealUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealID;
-            }
-
-        })
-
-    }
-
-    // Autocomplete Widget
-    $(function () {
-        console.log(allMeals);
-        // will populate this with allMeals[x].strMeal.
-        var mealNames = []; 
-        // for loop to populate mealNames array
-        for (x = 0; x < allMeals.length; x++) {
-            //console.log(JSON.stringify(allMeals[x].strMeal));
-            mealNames.push(JSON.stringify(allMeals[x].strMeal));
+    fetch(listCategories)
+    .then(function (res) {
+        if (!res.ok) {
+            throw res.json(); 
         }
-        console.log(mealNames);
-        $('#search-text').autocomplete({
-            source: mealNames,
-        });
+        return res.json(); 
+    })
+
+    .then (function (categoryData) {
+        //console.log(categoryData);
+        catLength = categoryData.meals.length;
+        console.log(catLength);
+
+        for (i = 0; i < catLength; i++) {
+            // Loop through each category in categoryData, and list all recipes in each category.
+            var category = (JSON.stringify(categoryData.meals[i].strCategory)).toLowerCase();
+            category = JSON.parse(category);
+            
+            allCategories.push(category);
+            urlSearchCat = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + allCategories[i];
+
+            // Request data from each url
+            fetch (urlSearchCat)
+            .then(function (res3) {
+                if (!res3.ok) {
+                    throw res3.json(); 
+                }
+                return res3.json(); 
+            })
+            .then (function(print) {
+                //allCategoryMeals.push(print.meals);
+                for (b = 0; b < print.meals.length; b++) {
+                    var pms = print.meals[b].strMeal;
+                allMeals.push(pms);
+                
+                }
+
+            })
+
+        }
+         
+    });
+
+    $('#search-text').autocomplete({
+        source: allMeals,
     });
      
 })
@@ -121,7 +113,35 @@ for (z = 0; z < 14; z++) {
         switchPage();
     }, 
     );
+
 }      
+
+// Click listener function for search bar
+function handleSearchForm(event) {
+    event.preventDefault();
+
+    console.log('clicked');
+    var userInput = document.getElementById("search-text").value;
+    console.log(userInput);
+
+    //var searchNameUrl = 'www.themealdb.com/api/json/v1/1/search.php?s=' + userInput;
+    
+    // Set chosen name into local storage
+    localStorage.setItem('clickedName', userInput);
+
+     // Calling HTML for results page when any food genre is clicked
+     function switchPage() {
+        location.href = resultsURL;
+    }; 
+
+    switchPage();
+
+}
+
+// Click listener for search bar
+searchFormEl.addEventListener('submit', handleSearchForm);
+
+
 
 // Calvin's code
 function makeHTML(mealData) {
