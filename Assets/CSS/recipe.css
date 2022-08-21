@@ -38,7 +38,7 @@ main {
 #recipe-card {
     display: flex;
     flex-direction: row;
-    min-width: 900px;
+    width: 90%;
     min-height: 500px;
     background-color: rgb(206, 199, 191);
     border-radius: 1rem;
@@ -52,7 +52,10 @@ main {
 
 #ingredient-header {
     text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
+
 
 #instructions-cont {
     margin: 2rem;
@@ -60,9 +63,11 @@ main {
     border-left-color: black;
     border-left-width: 2px;
     border-left-style: solid;
-
+    padding-left: .5rem;
 }
 
 #instructions-header {
     text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
