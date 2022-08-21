@@ -1,3 +1,7 @@
+body {
+  font-family: "Playfair Display", serif;
+}
+
 #resultsText {
     font-size: 1rem;
     font-weight: 500;
@@ -6,10 +10,12 @@
 
 .resultCards {
     background-color: rgb(190, 188, 188);
+    border-radius: .4rem;
 }
 
 .resultCards:hover {
-    border: 4px solid rgb(93, 196, 115);
+    border: 4px solid rgb(191, 161, 161);
+
 }
 
 .arrow {
