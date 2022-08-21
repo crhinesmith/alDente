@@ -23,6 +23,7 @@ function generateHTML (selectedMealData) {
 
   var instructionsText = document.createElement('p');
   instructionsText.textContent = selectedMealData.instructions
+  instructionsText.setAttribute('id', 'instructions-text');
 
   for (var i = 0; i< selectedMealData.ingredients.length ;i++){
     var ingredientsItem = document.createElement('li');
