@@ -242,7 +242,7 @@ function getDrinkData(){
         drinkPairing.recipe = data.drinks[0].strDrink
         drinkPairing.instructions = data.drinks[0].strInstructions
         var drink = data.drinks[0]
-        for (var i = 1; i < 16; i++) {
+        for (var i = 1; i < 5; i++) {
             var ingredient = drinkPairing["strIngredient" + i]
             var measurement = drinkPairing["strMeasure" + i]
             if (ingredient !== null && ingredient !== "") {
@@ -277,7 +277,7 @@ function generateRecipeOTD() {
             // use saved data
             var parsedData = JSON.parse(savedData)
             makeHTML(parsedData)
-            makedrinkHTML(drinkPairing)
+            getDrinkData()
         }
     } else {
         getData()
