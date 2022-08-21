@@ -151,14 +151,17 @@ searchFormEl.addEventListener('submit', handleSearchForm);
 function makeHTML(mealData) {
     var h1El = document.createElement('h1');
     h1El.textContent = "Try the Recipe of the Day...";
+    h1El.setAttribute('id', 'h1-el');
 
     var h2El = document.createElement('h2');
     h2El.textContent = mealData.recipe;
+    h2El.setAttribute('id', 'h2-el');
 
     var h4El = document.createElement('h4');
     h4El.textContent = "Ingredients:" 
 
-    var ulEl = document.createElement('ul')
+    var ulEl = document.createElement('ul');
+    ulEl.setAttribute('id', 'ingredients');
     
     for (var i = 0; i< mealData.ingredients.length ;i++){
         var ingredientsItem = document.createElement('li');
