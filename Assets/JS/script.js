@@ -25,6 +25,14 @@ var mealOTD = {
     instructions: "",
 }
 
+var drinkPairing = {
+    ingredients: [],
+    measurements:[],
+    recipe: "",
+    instructions:"",
+}
+
+
 // Indigo's code
 // Search API
 function getRecipeArray () {
@@ -172,6 +180,28 @@ function makeHTML(mealData) {
     recipeOTDContainer.append(h1El, h2El, h4El, ulEl, instructionsEl)
 }
 
+function makedrinkHTML(drinkData){
+    var h2drinkEl = document.createElement('h2');
+    h2drinkEl.textContent = "Pair with: " + drinkData.recipe;
+
+    var h4drinkEl = document.createElement('h4');
+    h4drinkEl.textContent = "Ingredients:" 
+
+    var uldrinkEl = document.createElement('ul')
+    
+    for (var i = 0; i< drinkData.ingredients.length ;i++){
+        var drinkingredientsItem = document.createElement('li');
+        drinkingredientsItem.textContent = drinkData.measurements[i] + " " + drinkData.ingredients[i];
+        uldrinkEl.appendChild(drinkingredientsItem);
+    }
+
+    var drinkinstructionsEl = document.createElement('p')
+    drinkinstructionsEl.textContent = "Instructions: " + drinkData.instructions;
+
+    recipeOTDContainer.append(h2drinkEl, h4drinkEl, uldrinkEl, drinkinstructionsEl)
+    
+}
+
 function getData() {
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
         .then(function (response) {
@@ -200,6 +230,32 @@ function getData() {
         })
 }
 
+function getDrinkData(){
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    .then(function (response) {
+        return response.json()
+    })
+    .then(function (data) {
+        drinkPairing.recipe = data.drinks[0].strDrink
+        drinkPairing.instructions = data.drinks[0].strInstructions
+        var drink = data.drinks[0]
+        for (var i = 1; i < 16; i++) {
+            var ingredient = drinkPairing["strIngredient" + i]
+            var measurement = drinkPairing["strMeasure" + i]
+            if (ingredient !== null && ingredient !== "") {
+                drinkPairing.ingredients.push(drink["strIngredient" + i])
+            }
+            if (measurement !== null && measurement !== "") {
+                drinkPairing.measurements.push(drink["strMeasure" + i])
+            }
+        }
+        makedrinkHTML(drinkPairing)
+    })  
+}
+
+
+
+
 function generateRecipeOTD() {
     while (recipeOTDContainer.firstChild) {
         recipeOTDContainer.removeChild(recipeOTDContainer.firstChild)
@@ -213,13 +269,16 @@ function generateRecipeOTD() {
         var todaysDate = moment().format('YYYY-MM-DD')
         if (moment(todaysDate).isAfter(mealOTD.timeDatawasRetrieved)) {
             getData()
+            getDrinkData()
         } else {
             // use saved data
             var parsedData = JSON.parse(savedData)
             makeHTML(parsedData)
+            makedrinkHTML(drinkPairing)
         }
     } else {
         getData()
+        getDrinkData();
     }
 }
 generateRecipeOTD();
