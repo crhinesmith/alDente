@@ -98,8 +98,12 @@ function getRecipeByNameData(){
     generateHTML(generatedMeal);
   })
   
-}
+};
 
+$("#resultsNavBtnThree").on("click", function() {
+  console.log("Button clicked!!");
+  location.href = "..\\HTML\\cookbook.html"
+  });
 
 // function makeList() {
 //   var savedRecipe = prompt("would you like to save this recipe?")

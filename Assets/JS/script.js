@@ -227,4 +227,7 @@ function generateRecipeOTD() {
 }
 generateRecipeOTD();
 
+$("#resultsNavBtnOne").on("click", function() {
+    location.href = "Assets/HTML/cookbook.html"
+    });
 

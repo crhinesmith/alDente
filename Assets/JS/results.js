@@ -40,8 +40,7 @@ selectedRecipeCard.on('click', function resultsPageToRecipePage (e) {
 );
 
 // Event listener for the navbar button //
-$("#resultsNavBtn").on("click", function() {
-console.log("Button pressed!");
+$("#resultsNavBtnTwo").on("click", function() {
 location.href = "..\\HTML\\cookbook.html"
 });
 
