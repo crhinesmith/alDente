@@ -5,6 +5,7 @@ var recipeOTDContainer = document.getElementById("recipe-today")
 var searchGenre = document.getElementById("searchGenre");
 var resultsURL = 'Assets/HTML/results.html';
 var recipeURL = 'groupproject1/Assets/HTML/recipe.html';
+var drinkOTDContainer = document.getElementById("drink-today");
 
 // Array to hold ALL meal options. Not sure yet if I'll need this
 var allCategories = [];
@@ -184,13 +185,21 @@ function makeHTML(mealData) {
 }
 
 function makedrinkHTML(drinkData){
+    var h1drinkEl = document.createElement('h1');
+    h1drinkEl.textContent = "Pair with: " 
+    h1drinkEl.setAttribute('id', 'h1-el');
+
     var h2drinkEl = document.createElement('h2');
-    h2drinkEl.textContent = "Pair with: " + drinkData.recipe;
+    h2drinkEl.textContent =  drinkData.recipe;
+    h2drinkEl.setAttribute('id', 'h2-el');
+
 
     var h4drinkEl = document.createElement('h4');
     h4drinkEl.textContent = "Ingredients:" 
 
-    var uldrinkEl = document.createElement('ul')
+    var uldrinkEl = document.createElement('ul');
+    uldrinkEl.setAttribute('id', 'ingredients');
+
     
     for (var i = 0; i< drinkData.ingredients.length ;i++){
         var drinkingredientsItem = document.createElement('li');
@@ -201,7 +210,7 @@ function makedrinkHTML(drinkData){
     var drinkinstructionsEl = document.createElement('p')
     drinkinstructionsEl.textContent = "Instructions: " + drinkData.instructions;
 
-    recipeOTDContainer.append(h2drinkEl, h4drinkEl, uldrinkEl, drinkinstructionsEl)
+    recipeOTDContainer.append(h1drinkEl, h2drinkEl, h4drinkEl, uldrinkEl, drinkinstructionsEl)
     
 }
 

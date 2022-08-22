@@ -15,6 +15,6 @@ $("#resultsNavBtnFive").on("click", function() {
 
 // Clears saved recipies 
 $("#clearListBtn").on("click", function() {
-    localStorage.clear("allEntries")
+    localStorage.removeItem("allEntries")
     location. reload()
     });
