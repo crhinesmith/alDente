@@ -54,7 +54,7 @@ main {
     margin: .15rem 0;
     font-size: 1rem;
     padding-left: .3rem;
-    max-width: 28%;
+    max-width: 8rem;
 }
 
 #recipe-today {
@@ -75,6 +75,7 @@ main {
 #searchGenre :hover {
     background-color: rgb(237, 207, 207);
     font-size: 1.2rem;
+    font-weight: 500;
     border-radius: .2rem;
 }
 

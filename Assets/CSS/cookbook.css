@@ -2,18 +2,18 @@ body {
   font-family: "Playfair Display", serif;
 }
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-      Contact
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+#cookbookHeader {
+  text-align: center;
+  background-color:  rgb(206, 199, 191);
+  font-size: 2rem;
+}
+
+#cookbookContainer{
+  background-color: rgb(230, 230, 230);
+  margin-top: 1rem;
+}
+
+#clearListBtn:hover {
+  background-color: rgb(237, 207, 207);
+  font-size: 1rem;
+}

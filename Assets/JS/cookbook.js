@@ -1,16 +1,20 @@
-const recipeList = JSON.parse(localStorage.getItem("recipes")) || []
-console.log(recipeList)
-console.log(recipeList[14]) 
-console.log(recipeList[14].genre)
+let recipeList = JSON.parse(localStorage.getItem("allEntries"));
+//Loop to display user's list of saved recipes from local storage
+for (var i = 0; i < recipeList.length; i++) {
+    $("#localSavedRecipeList").append(
+        `<li class="flex flex-col border-solid border-2 border-light-blue-500" id="savedRecipeListEl">
+        ${recipeList[i]}
+        </li>`
+    )
+}
 
+// Event listener for the navbar button //
+$("#resultsNavBtnFive").on("click", function() {
+    location.href = "../../index.html"
+    });
 
-
-
-
-//for (var i = 0; i < recipeList.length; i++) {
-//create table row
-//create table head.
-//append table head to table row. 
-// append table row to table id content
-//change text content
-//}
+// Clears saved recipies 
+$("#clearListBtn").on("click", function() {
+    localStorage.clear("allEntries")
+    location. reload()
+    });

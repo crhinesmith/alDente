@@ -43,14 +43,3 @@ selectedRecipeCard.on('click', function resultsPageToRecipePage (e) {
 $("#resultsNavBtnTwo").on("click", function() {
 location.href = "..\\HTML\\cookbook.html"
 });
-
-// If I have time try to make this work //
-// $("#arrowLeft").on("click", function() {
-//     console.log("Button pressed!");
-//     i -= 12;
-//     });
-
-// $("#arrowRight").on("click", function() {
-//     console.log("Button pressed!");
-//     i = 12;
-//     });
