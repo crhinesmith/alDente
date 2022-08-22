@@ -63,7 +63,7 @@ main {
     border-left-color: black;
     border-left-width: 2px;
     border-left-style: solid;
-    padding-left: .5rem;
+    padding-left: 1rem;
 }
 
 #instructions-header {

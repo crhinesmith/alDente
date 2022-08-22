@@ -104,4 +104,10 @@ main {
     background-color: rgb(237, 207, 207);
     border-radius: 0rem .5rem .5rem 0;
     padding: 1rem 2rem;
+    padding-top: 2rem;
+}
+
+#h1-el-drink {
+    font-size: 1.3rem;
+    font-weight: 500;
 }

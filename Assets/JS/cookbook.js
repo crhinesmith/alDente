@@ -18,3 +18,6 @@ $("#clearListBtn").on("click", function() {
     localStorage.removeItem("allEntries")
     location. reload()
     });
+
+
+
