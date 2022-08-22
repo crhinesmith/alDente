@@ -1,3 +1,9 @@
+/* variables */
+:root {
+    --pink: rgb(237, 207, 207);
+    --grey: rgb(206, 199, 191);
+}
+
 body {
     font-family: "Playfair Display", serif;
 }
@@ -11,7 +17,7 @@ main {
 
 #home-title {
     text-align: center;
-    background-color: rgb(237, 207, 207);
+    background-color: var(--pink);
     padding: 2rem 3rem;
     border-radius: .5rem;
     margin: 3rem 2rem 0;
@@ -24,7 +30,7 @@ main {
     flex-direction: row;
     width: 92%;
     min-height: 500px;
-    background-color: rgb(206, 199, 191);
+    background-color: var(--grey);
     border-radius: 1rem;
     margin-top: 3rem;
     margin-bottom: 5rem;
@@ -64,7 +70,7 @@ main {
 }
 /* Temp styling so there is feedback on what is being clicked (feel free to change later) */
 #searchGenre :hover {
-    background-color: rgb(237, 207, 207);
+    background-color: var(--pink);
     font-size: 1.2rem;
     font-weight: 500;
     border-radius: .2rem;
@@ -101,7 +107,7 @@ main {
 }
 
 #drink-today {
-    background-color: rgb(237, 207, 207);
+    background-color: var(--pink);
     border-radius: 0rem .5rem .5rem 0;
     padding: 1rem 2rem;
     padding-top: 2rem;
