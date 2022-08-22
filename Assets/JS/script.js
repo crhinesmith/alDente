@@ -210,7 +210,7 @@ function makedrinkHTML(drinkData){
     var drinkinstructionsEl = document.createElement('p')
     drinkinstructionsEl.textContent = "Instructions: " + drinkData.instructions;
 
-    recipeOTDContainer.append(h1drinkEl, h2drinkEl, h4drinkEl, uldrinkEl, drinkinstructionsEl)
+    drinkOTDContainer.append(h1drinkEl, h2drinkEl, h4drinkEl, uldrinkEl, drinkinstructionsEl)
     
 }
 

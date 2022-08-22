@@ -26,6 +26,9 @@ function generateHTML (selectedMealData) {
     var ingredientsItem = document.createElement('li');
     ingredientsItem.textContent = selectedMealData.measurements[i] + " " + selectedMealData.ingredients[i];
     ingredientsListEl.appendChild(ingredientsItem);
+    if (ingredientsItem.textContent == 'null null') {
+      ingredientsItem.setAttribute('style', 'display: none');
+    }
 }
 
   instructionsEl.append(instructionsText)
@@ -91,6 +94,8 @@ function getRecipeByNameData(){
         if (measurement !== null && measurement !== "") {
             generatedMeal.measurements.push(meal["strMeasure" + e])
         }
+
+
     }
     generateHTML(generatedMeal);
   }) 
