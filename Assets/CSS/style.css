@@ -117,3 +117,22 @@ main {
     font-size: 1.3rem;
     font-weight: 500;
 }
+
+@media screen and (max-width: 1776px) {
+    #big-cont {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    #big-cont {
+        width: 75%;
+        flex-direction: column;
+    }
+    #recipe-today {
+        border-style: none;
+    }
+    #drink-today {
+        border-radius: 0 0 .5rem .5rem;
+    }
+}
