@@ -187,7 +187,7 @@ function makeHTML(mealData) {
 function makedrinkHTML(drinkData){
     var h1drinkEl = document.createElement('h1');
     h1drinkEl.textContent = "Pair with: " 
-    h1drinkEl.setAttribute('id', 'h1-el');
+    h1drinkEl.setAttribute('id', 'h1-el-drink');
 
     var h2drinkEl = document.createElement('h2');
     h2drinkEl.textContent =  drinkData.recipe;
@@ -205,12 +205,15 @@ function makedrinkHTML(drinkData){
         var drinkingredientsItem = document.createElement('li');
         drinkingredientsItem.textContent = drinkData.measurements[i] + " " + drinkData.ingredients[i];
         uldrinkEl.appendChild(drinkingredientsItem);
+        if (drinkingredientsItem.textContent == 'null null') {
+            drinkingredientsItem.setAttribute('style', 'display: none');
+          }
     }
 
     var drinkinstructionsEl = document.createElement('p')
     drinkinstructionsEl.textContent = "Instructions: " + drinkData.instructions;
 
-    recipeOTDContainer.append(h1drinkEl, h2drinkEl, h4drinkEl, uldrinkEl, drinkinstructionsEl)
+    drinkOTDContainer.append(h1drinkEl, h2drinkEl, h4drinkEl, uldrinkEl, drinkinstructionsEl)
     
 }
 
