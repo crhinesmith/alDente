@@ -14,6 +14,6 @@ This application is designed to help anyone and everyone looking for a simple an
 ![Screenshot](homepage-aldente.png)
 
 ## Deployed Application
-Click [here](https://ripbog.github.io/groupproject1/index.html) for Al Dente's live URL.
+Click [here](https://crhinesmith.github.io/alDente/) for Al Dente's live URL.
 
-Click [here](https://github.com/ripbog/groupproject1) for our GitHub Repository.
+Click [here](https://github.com/crhinesmith/alDente) for our GitHub Repository.
